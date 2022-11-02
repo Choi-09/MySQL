@@ -68,7 +68,7 @@
  1. 명령문
   ```
   alter table FK테이블명
-	add constraint FK테이블명_PK테이블명_fk foreign key (필드명)
+	add constraint FK테이블명_PK테이블명_fk foreign key (필드명)	//FK테이블명_PK테이블명_fk : 여기서 테이블명은 식별자이기때문에 내가 마음대로 설정가능
     references PK테이블명(필드명);
     
     * foreign key: 외래 키 

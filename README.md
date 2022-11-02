@@ -81,17 +81,17 @@
   ``` 
 ## 파일 주고받기
   ```
-  	1. Export
-  		1) Administration > Export
-		2) Schema 선택
-		3) 저장 폴더 선택
-		4) Start Export
-	2. Import
-		1) Import 해 올 workbench에 
-		   - create database bd명;
-		2) Import 시켜놓은 폴더 선택
-		3) Start Import
-		4) Schema 새로고침
+  1. Export
+	1) Administration > Export
+	2) Schema 선택
+	3) 저장 폴더 선택
+	4) Start Export
+  2. Import
+	1) Import 해 올 workbench에 
+	   - create database bd명;
+	2) Import 시켜놓은 폴더 선택
+	3) Start Import
+	4) Schema 새로고침
   ```
 ## 명령문
   ```

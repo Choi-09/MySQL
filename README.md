@@ -79,3 +79,36 @@
           - 참조무결성: relation을 맺을 때 primery key에 없는 url이 foreign key에 들어가면 안되므로 테이블 작성 후에 연결시켜준다.
           - relation 맺어진 상태에서는 primery data 못지운다.
   ``` 
+## 파일 주고받기
+  ```
+  	1. Export
+  		1) Administration > Export
+		2) Schema 선택
+		3) 저장 폴더 선택
+		4) Start Export
+	2. Import
+		1) Import 해 올 workbench에 
+		   - create database bd명;
+		2) Import 시켜놓은 폴더 선택
+		3) Start Import
+		4) Schema 새로고침
+  ```
+## 명령문
+  ```
+  [index]
+  	- 검색성능을 높이기 위해서 사용. primery key는 내부적으로 자동 index설정
+	- 확인
+		table → 인덱스붙일 필드 → indexes
+	- 만들기
+		create index idx_필드명 on 테이블명(필드명);	// 보통 index를 idx라고 축약
+		
+  [View]
+  	- 가상테이블을 만들어서 보고싶은것만 보여줌
+	- 만들기
+		create view `새로운view명` as select 필드명 from 테이블명;	// 끝에 where status > 20 등의 조건식을 붙일 수 있다.
+		
+  [stored procedures]
+  	- 몇 개의 일을 묶어서 처리할 때 사용
+	- 만들기
+		create stored procedures → Begin select 필드명 from 테이블명 End; → 작업파일에서 call 새로만든 procedure명;
+  

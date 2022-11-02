@@ -38,6 +38,8 @@
   * use 데이터베이스 이름;  // 해당 데이터베이스 선택, 사용
   * select * from 테이블명; // 테이블에 있는 모든 데이터 출력
   * select * from 테이블명 where 컬럼명 like '% ... %';  // 컬럼에서 ...라는 내용을 포함한 모든 데이터 출력
+  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
+  * delimiter$$	 // 구분자 바꾸기
 
 ### 데이터 입력
   ```
@@ -93,22 +95,25 @@
 	3) Start Import
 	4) Schema 새로고침
   ```
-## 명령문
+## 개체
   ```
   [index]
      - 검색성능을 높이기 위해서 사용. primery key는 내부적으로 자동 index설정
      - 확인
-	 table → 인덱스붙일 필드 → indexes
+	  table → 인덱스붙일 필드 → indexes
      - 만들기
-	 create index idx_필드명 on 테이블명(필드명);	// 보통 index를 idx라고 축약
+	  create index idx_필드명 on 테이블명(필드명);	// 보통 index를 idx라고 축약
 		
   [View]
      - 가상테이블을 만들어서 보고싶은것만 보여줌
      - 만들기
-	 create view `새로운view명` as select 필드명 from 테이블명;	// 끝에 where status > 20 등의 조건식을 붙일 수 있다.
+	  create view `새로운view명` as select 필드명 from 테이블명;	// 끝에 where status > 20 등의 조건식을 붙일 수 있다.
 		
   [stored procedures]
      - 몇 개의 일을 묶어서 처리할 때 사용
      - 만들기
-	 create stored procedures → Begin select 필드명 from 테이블명 End; → 작업파일에서 call 새로만든 procedure명;
+	  create stored procedures → Begin select 필드명 from 테이블명 End; → 작업파일에서 call 새로만든 procedure명;
   
+  [trigger]
+     - 자동적으로 동작하게 만들 때 사용 
+     	ex) 회원탈퇴 시 회원정보를 바로 삭제하는 것이 아니라, 기존 테이블에서만 삭제하고 다른 테이블에 옮겨 저장해 놓을 때.

@@ -38,6 +38,8 @@
   * use 데이터베이스 이름;  // 해당 데이터베이스 선택, 사용
   * select * from 테이블명; // 테이블에 있는 모든 데이터 출력
   * select * from 테이블명 where 컬럼명 like '% ... %';  // 컬럼에서 ...라는 내용을 포함한 모든 데이터 출력
+  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
+  * delimiter$$	 // 구분자 바꾸기
 
 ### 데이터 입력
   ```
@@ -68,10 +70,13 @@
  1. 명령문
   ```
   alter table FK테이블명
-	add constraint FK테이블명_PK테이블명_fk foreign key (필드명)
+	add constraint FK테이블명_PK테이블명_fk foreign key (필드명)	//FK테이블명_PK테이블명_fk : 여기서 테이블명은 식별자이기때문에 내가 마음대로 설정가능
     references PK테이블명(필드명);
     
-    * foreign key: 외래 키 
+   ↔ ALTER TABLE 테이블명
+	DROP CONSTRAINT fk식별자; 
+   
+   * foreign key: 외래 키 
       - 역할: primery key와 연결되어 있는 키(relation 만든다.)
       - relation 확인: database → reverse engineer → stored Connection 선택→ Next 
       - 특징
@@ -79,3 +84,39 @@
           - 참조무결성: relation을 맺을 때 primery key에 없는 url이 foreign key에 들어가면 안되므로 테이블 작성 후에 연결시켜준다.
           - relation 맺어진 상태에서는 primery data 못지운다.
   ``` 
+## 파일 주고받기
+  ```
+  1. Export
+	1) Administration > Export
+	2) Schema 선택
+	3) 저장 폴더 선택
+	4) Start Export
+  2. Import
+	1) Import 해 올 workbench에 
+	   - create database bd명;
+	2) Import 시켜놓은 폴더 선택
+	3) Start Import
+	4) Schema 새로고침
+  ```
+## 개체
+  ```
+  [index]
+     - 검색성능을 높이기 위해서 사용. primery key는 내부적으로 자동 index설정
+     - 확인
+     	table → 인덱스붙일 필드 → indexes
+     - 만들기
+     	create index idx_필드명 on 테이블명(필드명);	// 보통 index를 idx라고 축약
+		
+  [View]
+     - 가상테이블을 만들어서 보고싶은것만 보여줌
+     - 만들기
+     	create view `새로운view명` as select 필드명 from 테이블명;	// 끝에 where status > 20 등의 조건식을 붙일 수 있다.
+		
+  [stored procedures]
+     - 몇 개의 일을 묶어서 처리할 때 사용
+     - 만들기
+     	create stored procedures → Begin select 필드명 from 테이블명 End; → 작업파일에서 call 새로만든 procedure명;
+  
+  [trigger]
+     - 자동적으로 동작하게 만들 때 사용 
+     	ex) 회원탈퇴 시 회원정보를 바로 삭제하는 것이 아니라, 기존 테이블에서만 삭제하고 다른 테이블에 옮겨 저장해 놓을 때.

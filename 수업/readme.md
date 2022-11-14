@@ -1,8 +1,10 @@
-테이블(Table) : 서로 연관된 레코드의 집합을 의미
+## 명령어 모음
 
+테이블(Table) : 서로 연관된 레코드의 집합.
 레코드(Record) : 하나의 단위로 취급되는 자료의 집합. =열(column) = 속성(attribute)
-
 필드(Field) : 가장 작은 단위의 데이터를 의미. = 행(row) = 튜플(tuple)
+![row, colum 구분](https://user-images.githubusercontent.com/51871037/201661348-893fd445-ffdb-4526-b3e9-477ccfe0bca4.PNG)
+
 
 1. MySql 접속
 1) 터미널: mysql -u root -p

@@ -34,13 +34,6 @@
   * 대문자 입력: 키워드로 틀리면 안되는 것을 강조해서 적어줌
   * 프라이머리 키 필수 속성: Not Null, 유일한 값  ex) 주민번호 등
 
-### 명령어
-  * use 데이터베이스 이름;  // 해당 데이터베이스 선택, 사용
-  * select * from 테이블명; // 테이블에 있는 모든 데이터 출력
-  * select * from 테이블명 where 컬럼명 like '% ... %';  // 컬럼에서 ...라는 내용을 포함한 모든 데이터 출력
-  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
-  * delimiter$$	 // 구분자 바꾸기
-
 ### 데이터 입력
   ```
   1. 명령어
@@ -66,6 +59,10 @@
     2. DML: Manipulation (일반사용자용)
     3. DCL: Control (DBA용)
     ```
+### 기타 명령어
+  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
+  * delimiter$$	 // 구분자 바꾸기
+  
 ## Relation
  ```
  1. 명령어 

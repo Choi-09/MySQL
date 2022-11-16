@@ -1,6 +1,4 @@
 # MySQL
-## MySQL 작업
-
 ### MySQL 설치
   + 주소: https://dev.mysql.com/downloads/windows/installer/8.0.html
   
@@ -9,7 +7,9 @@
   + db명, table명, field명은 반드시 영어로
   + preference > appearance > font: Korean > Table Figure Title : 맑은고딕(실습때 table명을 부득이하게 한글로 써야하는 경우가 있어서) 
   + show databases;  //관리자의 권한에 따라 보이는 데이터베이스가 다르다.
-  
+
+***
+## MySQL 작업
 ### 테이블 생성 및 실행
   + 테이블 생성 순서
     ```
@@ -34,16 +34,9 @@
   * 대문자 입력: 키워드로 틀리면 안되는 것을 강조해서 적어줌
   * 프라이머리 키 필수 속성: Not Null, 유일한 값  ex) 주민번호 등
 
-### 데이터 가공
-  * use 데이터베이스 이름;  // 해당 데이터베이스 선택, 사용
-  * select * from 테이블명; // 테이블에 있는 모든 데이터 출력
-  * select * from 테이블명 where 컬럼명 like '% ... %';  // 컬럼에서 ...라는 내용을 포함한 모든 데이터 출력
-  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
-  * delimiter$$	 // 구분자 바꾸기
-
 ### 데이터 입력
   ```
-  1. 명령문
+  1. 명령어
     insert into 테이블명(필드명) values('data', 'data', ...)   
     └> 전체 필드에 데이터를 넣는 경우 (필드명)을 생략할 수 있다. 필드를 여러개를 한 번에 입력가능! 필드명을 적으면 순서대로 데이터 입력! 
   2. 엑셀파일 활용
@@ -66,9 +59,13 @@
     2. DML: Manipulation (일반사용자용)
     3. DCL: Control (DBA용)
     ```
-## Relation 
- 1. 명령문
-  ```
+### 기타 명령어
+  * drop procedure IF EXIST procedure명;	//drop은 view 등에도 사용가능
+  * delimiter$$	 // 구분자 바꾸기
+  
+## Relation
+ ```
+ 1. 명령어 
   alter table FK테이블명
 	add constraint FK테이블명_PK테이블명_fk foreign key (필드명)	//FK테이블명_PK테이블명_fk : 여기서 테이블명은 식별자이기때문에 내가 마음대로 설정가능
     references PK테이블명(필드명);

@@ -11,7 +11,7 @@
  + 2가지 방법
 ```
   1) 터미널: mysql -u root -p
-  2) 워크밴치: mysql 실행
+  2) 워크벤치: mysql 실행
 ```
 
 ### 2. Database

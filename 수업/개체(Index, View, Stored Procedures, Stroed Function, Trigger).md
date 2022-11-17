@@ -18,7 +18,8 @@
           from <테이블명>      
           where <조건>; 
   ```
-  
+ 
+
 **3. stored procedures**
   ```
      - 몇 개의 일을 묶어서 처리할 때 사용
@@ -31,15 +32,17 @@
                 inout <파라미터3> <데이터타입3>
           )
           Begin                                          // procedure 로직 시작.
-            → select <기존필드명> into <새로운필드명>          // <기존필드명>의 값이 <새로운필드> 그릇으로 들어간다
+            → select <기존필드명> into <새로운필드명>          // <기존필드명>의 값이 <새로운필드> 그릇으로 들어간다. 
             → from <테이블명> 
             → where <조건>
           End$$ (//)                                     // procedure 로직 끝.
           DELIMITER ;                                    // delimiter_; : delimiter과 ;사이에 공백 한 칸 있다.
        •  (호출) call <stored procedure명>(<in파라미터값>, @<out파라미터미름>);               
                                                         // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
-  ```  
-    
+ ```  
+  *새수강신청 procedure 로직
+<p align = "center"> <img width="800" alt="새수강신청 procedure 로직" src="https://user-images.githubusercontent.com/51871037/202511675-1c67d9ed-0e89-4456-93e2-788097471ae8.png"> </p>
+
  + 3-1) procedure의 제어문 (Begin ~ End 사이)
      ```
        1) if문
@@ -98,7 +101,7 @@
        4) repeat문
           BEGIN
             → declare <변수1> <변수1 타입>;
-            declare <변수2> <변수2 타입>;
+              declare <변수2> <변수2 타입>;
             →   set <변수1> = <변수1 초기값>;
                 set <변수2> = <변수2 초기값>;
             → repeat
@@ -109,7 +112,16 @@
             → select <변수>;
           END
       ```              
-            
+  + 변수
+   ```
+    • declare <변수명> <변수타입> default ...;
+      ex) declare i int default 0;
+
+    • set <변수명> = <값>;
+      ex) set i = 0; 
+    • select <필드명> into <변수명> from <테이블명>;
+      ex) select addr into _addr from Student where id =1;
+      -- set이나 select ino 선택해서 사용가능. 
 ```  
 **4. trigger**
   ```

@@ -55,7 +55,7 @@ CALL dorepeat(10,@a);
 select @a;
 
 
-drop procedure if exists 새수강신청;
+drop procedure if exists 새수강신청;					// 수강신청 
 DELIMITER //
 CREATE PROCEDURE 새수강신청(IN 학번 CHAR(7), OUT 수강신청_번호 INT)
 BEGIN

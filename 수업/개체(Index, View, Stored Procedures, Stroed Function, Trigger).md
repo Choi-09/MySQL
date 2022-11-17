@@ -40,7 +40,7 @@
        •  (호출) call <stored procedure명>(<in파라미터값>, @<out파라미터미름>);               
                                                         // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
  ```  
-  *새수강신청 procedure 로직
+  <새수강신청 procedure 로직>
 <p align = "center"> <img width="800" alt="새수강신청 procedure 로직" src="https://user-images.githubusercontent.com/51871037/202511675-1c67d9ed-0e89-4456-93e2-788097471ae8.png"> </p>
 
  + 3-1) procedure의 제어문 (Begin ~ End 사이)
@@ -77,9 +77,9 @@
               from <테이블명>
               where <조건>
             → case 
-                  when <조건식1> then 
+                  when (<조건식1>) then 
                        set <출력(out) 파라미터명1> = <출력 파라미터값1>;
-                  when <비교 변수값2> then
+                  when (<조건식2>) then
                        set <출력(out) 파라미터명2> = <출력 파라미터값2>;
                   else
                        set <출력(out) 파라미터명3> = <출력 파라미터값3>;
@@ -91,7 +91,7 @@
               declare <변수2> <변수2 타입>;
             →   set <변수1> = <변수1 초기값>;
                 set <변수2> = <변수2 초기값>;
-            → while <조건식> do
+            → while (<조건식>) do
             →   set <변수1> = <원하는 값 or 식>;
                 set <변수2> = <원하는 값 or 식>; 
             → end while;

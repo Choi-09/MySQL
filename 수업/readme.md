@@ -1,28 +1,34 @@
 ## 명령어 모음
-+ 테이블(Table) : 서로 연관된 레코드의 집합.
-+ 레코드(Record) : 하나의 단위로 취급되는 자료의 집합. =열(column) = 속성(attribute)
-+ 필드(Field) : 가장 작은 단위의 데이터를 의미. = 행(row) = 튜플(tuple)
+```
+• 테이블(Table) : 서로 연관된 레코드의 집합.
+• 레코드(Record) : 하나의 단위로 취급되는 자료의 집합. =열(column) = 속성(attribute)
+• 필드(Field) : 가장 작은 단위의 데이터를 의미. = 행(row) = 튜플(tuple)
+```
 ![row, colum 구분](https://user-images.githubusercontent.com/51871037/201661348-893fd445-ffdb-4526-b3e9-477ccfe0bca4.PNG)
-
-1. MySql 접속
+---
+### 1. MySql 접속
+ + 2가지 방법
+ ```
  1) 터미널: mysql -u root -p
  2) 워크밴치: mysql 실행
+ ```
+### 2. Database
+ ```
+   1) DB생성
+    + create database <데이터베이스 명> character set utf9 collate utf8_general_ci;
 
-2. Database
-   (1) DB생성
-  - create database <데이터베이스 명> character set utf9 collate utf8_general_ci;
+   2) DB조회
+    - show databases;
 
- 2) DB조회
-  - show databases;
+   3) DB사용
+    - use 데이터베이스명;
 
- 3) DB사용
-  - use 데이터베이스명;
+   4) DB삭제
+    - drop databases 데이터베이스명;
 
-4) DB삭제
-drop databases 데이터베이스명;
-
-
-3. Table
+```
+### 3. Table
+```
 1) table 생성
  create table <테이블이름> (컬럼명1 data_type, 컬럼명2 data_type ...);
 
@@ -37,8 +43,9 @@ show tables;
 4) table 구조파악
 desc 테이블명;
 
-
-4. CRUD 명령어
+```
+### 4. CRUD 명령어
+```
 1) Read
 -기본
 (1) select * from <테이블명>;
@@ -74,8 +81,9 @@ ex) inset into 'test' (name, place) values ('김삼돌, '올레플라자') on du
 4) Delete
 (1) delete from <테이블명> where <조건>;
 
-
-5. Join
+```
+### 5. Join
+```
 (1) inner Join
 select * from A 별칭a (inner) join B 별칭b on a.key = b.key;
 => select <A컬럼명1, B컬럼명2> from A 별칭a , B 별칭b where a.A컬럼명 = b.B컬럼명; (where이하 join조건)
@@ -92,7 +100,9 @@ select * from A full outer join B on A.key = B.key;
 (7) full outer join (차집합)
 select * from A full outer join on A.key = B.key where A.key is null of B.key is null;
 
-6. 서브쿼리
+```
+### 6. 서브쿼리
+```
 (1) select <컬럼명> from <테이블명> where <조건컬럼명> = (select <컬럼명*> from <테이블명*> where <조건*>);
 ex) select dname from dept where deptno = (select deptno from emp where ename = 'JONES');
 :emp에서 ename이 'jones'라는 사람이 속한 deptno 의 dname 을 dept에서 찾기. 

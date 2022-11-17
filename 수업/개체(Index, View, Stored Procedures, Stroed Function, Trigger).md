@@ -80,6 +80,35 @@
                   else
                        set <출력(out) 파라미터명3> = <출력 파라미터값3>;
           END
+     ```
+       3) while문
+          BEGIN
+            → declare <변수1> <변수1 타입>;
+              declare <변수2> <변수2 타입>;
+            →   set <변수1> = <변수1 초기값>;
+                set <변수2> = <변수2 초기값>;
+            → while <조건식> do
+                set <변수1> = <원하는 값 or 식>;
+                set <변수2> = <원하는 값 or 식>; 
+            → end while;
+            → select <변수>;
+          END
+     ```
+       4) repeat문
+          BEGIN
+            declare <변수1> <변수1 타입>;
+            declare <변수2> <변수2 타입>;
+              set <변수1> = <변수1 초기값>;
+              set <변수2> = <변수2 초기값>;
+            repeat
+              set <변수1> = <원하는 값 or 식>;
+              set <변수2> = <원하는 값 or 식>; 
+            until <조건식>
+            end repeat;
+            select <변수>;
+          END
+      ```              
+            
 ```  
 **4. trigger**
   ```

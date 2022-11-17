@@ -55,21 +55,21 @@ CALL dorepeat(10,@a);
 select @a;
 
 
-drop procedure if exists 새수강신청;					// 수강신청 프로시저가 이미 있으면 삭제시킨다.(업데이트시 활용)
+drop procedure if exists 새수강신청;					-- 수강신청 프로시저가 이미 있으면 삭제시킨다.(업데이트시 활용)
 DELIMITER //
-CREATE PROCEDURE 새수강신청(IN 학번 CHAR(7), OUT 수강신청_번호 INT)	    // "새수강신청"이라는 프로시저 만드는데 학번(char) 입력하면 수강신청_번호(int) 출력
+CREATE PROCEDURE 새수강신청(IN 학번 CHAR(7), OUT 수강신청_번호 INT)	    -- "새수강신청"이라는 프로시저 만드는데 학번(char) 입력하면 수강신청_번호(int) 출력
 BEGIN
-    declare exit handler for 1452				  // 1452 오류코드가 뜨면 'a foreign key constraint fails' 이라는 문구 read
+    declare exit handler for 1452				  -- 1452 오류코드가 뜨면 'a foreign key constraint fails' 이라는 문구 read
     select 'a foreign key constraint fails';
-    select MAX(수강신청번호) INTO 수강신청_번호 FROM 수강신청;		   // 수강신청 테이블에서 가장 큰 수강신청번호를 (새수강신청의) 수강신청_번호 그릇에 담는다.
-        SET 수강신청_번호 = 수강신청_번호 +1;			     // 수강신청_번호+1 값을 수강신청_번호에 넣음
-    INSERT INTO 수강신청(수강신청번호, 학번, 날짜, 연도, 학기)		  // 수강신청 테이블의 수강신청번호, 학번, 날짜, 연도, 학기 필드에
-    VALUES(수강신청_번호, 학번, CURDATE(), '2020', '2');	      // (새수강신청의) 수강신청_번호, 학번, 현재날짜, 2020, 2 를 넣는다.
+    select MAX(수강신청번호) INTO 수강신청_번호 FROM 수강신청;		   -- 수강신청 테이블에서 가장 큰 수강신청번호를 (새수강신청의) 수강신청_번호 그릇에 담는다.
+        SET 수강신청_번호 = 수강신청_번호 +1;			     -- 수강신청_번호+1 값을 수강신청_번호에 넣음
+    INSERT INTO 수강신청(수강신청번호, 학번, 날짜, 연도, 학기)		  -- 수강신청 테이블의 수강신청번호, 학번, 날짜, 연도, 학기 필드에
+    VALUES(수강신청_번호, 학번, CURDATE(), '2020', '2');	      -- (새수강신청의) 수강신청_번호, 학번, 현재날짜, 2020, 2 를 넣는다.
 END//
 delimiter ;
 
 -- 새수강신청sp 호출
-call 새수강신청('1804004', @수강신청_번호);			     // "새수강신청" 프로시저호출. 1804004학번을 입력하면 @수강신청_번호 출력.
+call 새수강신청('1804004', @수강신청_번호);			     -- "새수강신청" 프로시저호출. 1804004학번을 입력하면 @수강신청_번호 출력.
 select @수강신청_번호;
 
      

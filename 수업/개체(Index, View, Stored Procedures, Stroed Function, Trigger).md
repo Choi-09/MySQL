@@ -18,7 +18,9 @@
 **3. stored procedures**
   ```
      - 몇 개의 일을 묶어서 처리할 때 사용
-     - 만들기
+     - 명령어
+      DELIMITER $$
+      CREATE PROCEDURE
      	create stored procedures → Begin select 필드명 from 테이블명 End; → 작업파일에서 call 새로만든 procedure명;
   ```
 **4. trigger**

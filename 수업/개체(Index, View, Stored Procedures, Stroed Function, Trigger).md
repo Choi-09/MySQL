@@ -60,30 +60,30 @@
      ```
        2) case문
           (1) case-변수
-          BEGIN
-            → case <입력 변수명>
-                  when <비교 변수값1> then 
-                       set <출력(out) 파라미터명1> = <출력 파라미터값1>;
-                  when <비교 변수값2> then
-                       set <출력(out) 파라미터명2> = <출력 파라미터값2>;
-                  else
-                       set <출력(out) 파라미터명3> = <출력 파라미터값3>;
-          END
+              BEGIN
+                → case <입력 변수명>
+                      when <비교 변수값1> then 
+                           set <출력(out) 파라미터명1> = <출력 파라미터값1>;
+                      when <비교 변수값2> then
+                           set <출력(out) 파라미터명2> = <출력 파라미터값2>;
+                      else
+                           set <출력(out) 파라미터명3> = <출력 파라미터값3>;
+              END
           
           (2) case-조건식
-          BEGIN
-            → declare <변수명> <변수타입>;
-            → select <필드명> into <변수명>
-              from <테이블명>
-              where <조건>
-            → case 
-                  when (<조건식1>) then 
-                       set <출력(out) 파라미터명1> = <출력 파라미터값1>;
-                  when (<조건식2>) then
-                       set <출력(out) 파라미터명2> = <출력 파라미터값2>;
-                  else
-                       set <출력(out) 파라미터명3> = <출력 파라미터값3>;
-          END
+              BEGIN
+                → declare <변수명> <변수타입>;
+                → select <필드명> into <변수명>
+                  from <테이블명>
+                  where <조건>
+                → case 
+                      when (<조건식1>) then 
+                           set <출력(out) 파라미터명1> = <출력 파라미터값1>;
+                      when (<조건식2>) then
+                           set <출력(out) 파라미터명2> = <출력 파라미터값2>;
+                      else
+                           set <출력(out) 파라미터명3> = <출력 파라미터값3>;
+              END
      ```
        3) while문
           BEGIN

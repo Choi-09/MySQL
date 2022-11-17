@@ -31,12 +31,13 @@
                 inout <파라미터3> <데이터타입3>
           )
           Begin                                          // procedure 로직 시작.
-            → select <필드명>
+            → select <기존필드명> into <새로운필드명>          // <기존필드명>의 값이 <새로운필드> 그릇으로 들어간다
             → from <테이블명> 
             → where <조건>
           End$$ (//)                                     // procedure 로직 끝.
           DELIMITER ;                                    // delimiter_; : delimiter과 ;사이에 공백 한 칸 있다.
-       •  (호출) call <stored procedure명>;               // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
+       •  (호출) call <stored procedure명>(<in파라미터값>, @<out파라미터미름>);               
+                                                        // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
   ```  
     
  + 3-1) procedure의 제어문 (Begin ~ End 사이)

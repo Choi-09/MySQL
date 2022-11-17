@@ -121,7 +121,7 @@
         ex) set i = 0; 
       • select <필드명> into <변수명> from <테이블명>;
         ex) select addr into _addr from Student where id =1;
-        -- set이나 select ino 선택해서 사용가능. 
+        -- set이나 select into 선택해서 사용가능. 
     ``` 
 
 ---

@@ -47,7 +47,7 @@
      ```
        1) if문
           BEGIN
-            → declare <변수명> <변수데이터타입(길이)> default '<default값>';  // declare: 자바의 변수처럼 프로시저 안에서 사용할 변수 선언.
+            → declare <변수명> <변수데이터타입(길이)> default '<default값>';   // declare: 자바의 변수처럼 프로시저 안에서 사용할 변수 선언
             → set <declare에서 선언한 변수명> = <변수값>;                     // set: 대입할 값(원하는 값으로 세팅)   
             → if <조건1>                                                 // if then: if 조건문
               then <조건1이 참일 경우 실행 될 로직>;

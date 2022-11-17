@@ -9,30 +9,30 @@
 
 ### 1. MySql 접속
  + 2가지 방법
- ```
-   1) 터미널: mysql -u root -p
-   2) 워크밴치: mysql 실행
- ```
+```
+  1) 터미널: mysql -u root -p
+  2) 워크밴치: mysql 실행
+```
 
 ### 2. Database
- ```
-   1) DB생성
-    • create database <DB명> character set utf9 collate utf8_general_ci;
+```
+  1) DB생성
+     • create database <DB명> character set utf9 collate utf8_general_ci;
 
-   2) DB조회
-    • show databases;
+  2) DB조회
+     • show databases;
 
-   3) DB사용
-    • use <DB명>;
+  3) DB사용
+     • use <DB명>;
 
-   4) DB삭제
-    • drop databases <DB명>;
+  4) DB삭제
+     • drop databases <DB명>;
 ```
 
 ### 3. Table
 ```
   1) table 생성
-   • create table <테이블이름> (컬럼명1 data_type, 컬럼명2 data_type ...);
+     • create table <테이블이름> (컬럼명1 data_type, 컬럼명2 data_type ...);
 
   2) 자주쓰는 data_type
      (2-1) Text: CHAR(size), VARCHAR(size)
@@ -40,85 +40,85 @@
      (2-3) Date: DATE, DATETIME, TIMESTAMP
 
   3) table보기
-   • show tables;
+     • show tables;
 
   4) table 구조파악
-  desc <테이블명>;
+     • desc <테이블명>;
 ```
 
 ### 4. CRUD 명령어
 
-  **1) Create**
+   **1) Create**
 ```
-    • insert into <테이블명>(컬럼명1, 컬럼명2) values (컬럼1의값, 컬럼2의 값);
+     • insert into <테이블명>(컬럼명1, 컬럼명2) values (컬럼1의값, 컬럼2의 값);
 ```
-  **2) Read**
+   **2) Read**
 ```
-   (1) 기본
-      • select * from <테이블명?;
-      
-      • select <컬럼명1, 컬럼명2> from <테이블명> where (not) <조건>;
-      
-      • select <컬럼명1, 컬럼명2> from <테이블명> where <조건> limit <조회할 row 수>;
-      
-      •  select * from <테이블명> where <필드명> (not) between A and B;
-      
-      • select * from <테이블명> where <필드명> (not) in (A,B);
-        => select * from <테이블명> where <필드명> = A or <필드명> = B;
-        
-      • select * from <테이블명> where <필드명> (not) like '%문자열%';
-      
-      • select * from <테이블명> where <필드명> is (not) null;
-      
-      • select count(*) from <테이블명> where <조건>;
+     (1) 기본
+          • select * from <테이블명?;
 
-   (2) group by 
-      • select * from <테이블명> group by <기준 필드명>;
+          • select <컬럼명1, 컬럼명2> from <테이블명> where (not) <조건>;
 
-      • select * from <테이블명> group by <기준 필드명> having <조건>;
-          ex) select deptno, avg(sal) from emp group by deptno having avg(sal) >=2000;
-          ** avg, sum, count
+          • select <컬럼명1, 컬럼명2> from <테이블명> where <조건> limit <조회할 row 수>;
 
-    (3) order by 
-      • select * from <테이블명> order by <기준 필드명> <asc or desc>;       // asc: 오름차순, desc: 내림차순
-      
-      • select <필드명1, 필드명2> from <테이블명> order by <필드명1> desc, <필드명2> asc;
+          •  select * from <테이블명> where <필드명> (not) between A and B;
+
+          • select * from <테이블명> where <필드명> (not) in (A,B);
+            => select * from <테이블명> where <필드명> = A or <필드명> = B;
+
+          • select * from <테이블명> where <필드명> (not) like '%문자열%';
+
+          • select * from <테이블명> where <필드명> is (not) null;
+
+          • select count(*) from <테이블명> where <조건>;
+
+      (2) group by 
+          • select * from <테이블명> group by <기준 필드명>;
+
+          • select * from <테이블명> group by <기준 필드명> having <조건>;
+              ex) select deptno, avg(sal) from emp group by deptno having avg(sal) >=2000;
+              ** avg, sum, count
+
+      (3) order by 
+          • select * from <테이블명> order by <기준 필드명> <asc or desc>;       // asc: 오름차순, desc: 내림차순
+
+          • select <필드명1, 필드명2> from <테이블명> order by <필드명1> desc, <필드명2> asc;
 ```
   **3) Update**
 ```
-      • update <테이블명> set <기존컬럼명> = "업데이트컬럼명" where <조건>;
-      
-      • on duplicate key update  <컬럼명1> = 값1, <컬럼명2> = 값2
-          ex) inset into 'test' (name, place) values ('김삼돌, '올레플라자') on duplicate key update name = '김삼돌', place = '종로5가';
+          • update <테이블명> set <기존컬럼명> = "업데이트컬럼명" where <조건>;
+
+          • on duplicate key update  <컬럼명1> = 값1, <컬럼명2> = 값2
+              ex) inset into 'test' (name, place) values ('김삼돌, '올레플라자') on duplicate key update name = '김삼돌', place = '종로5가';
 ```
   **4) Delete**
 ```
-      • delete from <테이블명> where <조건>;
+         • delete from <테이블명> where <조건>;
 ```
 
 ### 5. Join
 ```
   1) inner Join
-    • select * from A 별칭a (inner) join B 별칭b on a.key = b.key;
-  => select <A컬럼명1, B컬럼명2> from A 별칭a , B 별칭b where a.A컬럼명 = b.B컬럼명; (where이하 join조건)
+     • select * from A 별칭a (inner) join B 별칭b on a.key = b.key;
+      => select <A컬럼명1, B컬럼명2> from A 별칭a , B 별칭b where a.A컬럼명 = b.B컬럼명; (where이하 join조건)
   
   2) left Join
-    • select * from A left join B on A.key = B.key;
+     • select * from A left join B on A.key = B.key;
     
   3) left anti Join
-    • select * from A left join B on A.key = B.key where B.key is null;
+     • select * from A left join B on A.key = B.key where B.key is null;
     
   4) right join
-    • select * from A right join B on A.key = B.key;
+     • select * from A right join B on A.key = B.key;
     
   5) right anti join
-    • select * from A right join B on A.key = B.key where A.key is null;
+     • select * from A right join B on A.key = B.key where A.key is null;
     
   6) full outer join(합집합)
-    • select * from A full outer join B on A.key = B.key;
+     • select * from A full outer join B on A.key = B.key;
     
   7) full outer join (차집합)
-    • select * from A full outer join on A.key = B.key where A.key is null of B.key is null;
+     • select * from A full outer join on A.key = B.key where A.key is null of B.key is null;
 ```
 
 ### 6. 서브쿼리
@@ -127,7 +127,7 @@
       ex) select dname from dept where deptno = (select deptno from emp where ename = 'JONES');
         : emp에서 ename이 'jones'라는 사람이 속한 deptno 의 dname 을 dept에서 찾기. 
 
-  2)select <컬럼명1, 컬럼명2, 컬럼명3> from emp where <조건럼명> > (select 조건컬럼명 from <테이블명>) order by <컬럼명> desc;
+  2) select <컬럼명1, 컬럼명2, 컬럼명3> from emp where <조건럼명> > (select 조건컬럼명 from <테이블명>) order by <컬럼명> desc;
       ex) select empno, ename, sal from emp where sal > (select avg(sal) from emp) order by sal desc;
         : emp에서 평균sal보다 sal이 큰 사람들의 empno, ename, sal을 내림차순으로 정렬.
 

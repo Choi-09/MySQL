@@ -41,7 +41,7 @@
                                                       // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
  ```  
   <새수강신청 procedure 로직>
-<p align = "center"> <img width="800" alt="새수강신청 procedure 로직" src="https://user-images.githubusercontent.com/51871037/202511675-1c67d9ed-0e89-4456-93e2-788097471ae8.png"> </p>
+<p align = "center"> <img width="800" alt="새수강신청 procedure 로직" src="https://user-images.githubusercontent.com/51871037/202511675-1c67d9ed-0e89-4456-93e2-788097471ae8.png"> </p> <br/> 
 
  + 3-1) procedure의 제어문 (Begin ~ End 사이)
      ```

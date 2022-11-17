@@ -55,25 +55,25 @@ CALL dorepeat(10,@a);
 select @a;
 
 
-drop procedure if exists 새수강신청;					// 수강신청 
+drop procedure if exists 새수강신청;					// 수강신청 프로시저가 이미 있으면 삭제시킨다.(업데이트시 활용)
 DELIMITER //
-CREATE PROCEDURE 새수강신청(IN 학번 CHAR(7), OUT 수강신청_번호 INT)
+CREATE PROCEDURE 새수강신청(IN 학번 CHAR(7), OUT 수강신청_번호 INT)	    // "새수강신청"이라는 프로시저 만드는데 학번(char) 입력하면 수강신청_번호(int) 출력
 BEGIN
-    declare exit handler for 1452
+    declare exit handler for 1452				  // 1452 오류코드가 뜨면 'a foreign key constraint fails' 이라는 문구 read
     select 'a foreign key constraint fails';
-    select MAX(수강신청번호) INTO 수강신청_번호 FROM 수강신청;
-        SET 수강신청_번호 = 수강신청_번호 +1;
-    INSERT INTO 수강신청(수강신청번호, 학번, 날짜, 연도, 학기)
-    VALUES(수강신청_번호, 학번, CURDATE(), '2020', '2');
+    select MAX(수강신청번호) INTO 수강신청_번호 FROM 수강신청;		   // 수강신청 테이블에서 가장 큰 수강신청번호를 (새수강신청의) 수강신청_번호 그릇에 담는다.
+        SET 수강신청_번호 = 수강신청_번호 +1;			     // 수강신청_번호+1 값을 수강신청_번호에 넣음
+    INSERT INTO 수강신청(수강신청번호, 학번, 날짜, 연도, 학기)		  // 수강신청 테이블의 수강신청번호, 학번, 날짜, 연도, 학기 필드에
+    VALUES(수강신청_번호, 학번, CURDATE(), '2020', '2');	      // (새수강신청의) 수강신청_번호, 학번, 현재날짜, 2020, 2 를 넣는다.
 END//
 delimiter ;
 
 -- 새수강신청sp 호출
-call 새수강신청('1804004', @수강신청_번호);
+call 새수강신청('1804004', @수강신청_번호);			     // "새수강신청" 프로시저호출. 1804004학번을 입력하면 @수강신청_번호 출력.
 select @수강신청_번호;
 
      
--- SP 실습1
+-- SP 실습(1) update row. 없는 내용을 집어넣는 것이므로 out이 없다.
 drop procedure if exists 새학과;
 
 delimiter //
@@ -85,7 +85,7 @@ create procedure 새학과 (
 BEGIN
     insert into 학과(학과번호, 학과명, 전화번호)
     values (학과_번호, 학과_명, 전화_번호);
-    select * from 학과 where 학과번호 = 학과_번호;
+    select * from 학과 where 학과번호 = 학과_번호;		// 이거 왜들어가는지 확인!
 END//
 delimiter ;
 
@@ -95,7 +95,7 @@ call 새학과('08', '컴퓨터보안학과', '022-200-7000');
 select * from 학과;
 
 
--- SP 실습2
+-- SP 실습(2) 통계. 이미 들어가 있는 값들을 불러내서 통계 프로시저에 담는것이므로 in이 없다.
 drop procedure if exists 통계;
 delimiter //
 create procedure 통계(

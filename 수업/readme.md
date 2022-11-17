@@ -48,7 +48,7 @@
 
 ### 4. CRUD 명령어
 
-    **1) Create**
+  **1) Create**
 ```
     • insert into <테이블명>(컬럼명1, 컬럼명2) values (컬럼1의값, 컬럼2의 값);
   

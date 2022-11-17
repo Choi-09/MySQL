@@ -1,4 +1,4 @@
-## 명령어 모음
+## 명령어, 쿼리문 모음
 ```
   • 테이블(Table) : 서로 연관된 레코드의 집합.
   • 레코드(Record) : 하나의 단위로 취급되는 자료의 집합. =열(column) = 속성(attribute)
@@ -6,6 +6,7 @@
 ```
   ![row, colum 구분](https://user-images.githubusercontent.com/51871037/201661348-893fd445-ffdb-4526-b3e9-477ccfe0bca4.PNG)
 ---
+
 ### 1. MySql 접속
  + 2가지 방법
  ```
@@ -46,9 +47,15 @@
 ```
 
 ### 4. CRUD 명령어
+
+    **1) Create**
 ```
-  1) Read
-    (1) 기본
+    • insert into <테이블명>(컬럼명1, 컬럼명2) values (컬럼1의값, 컬럼2의 값);
+  
+```
+  **2) Read**
+```
+   (1) 기본
       • select * from <테이블명?;
       
       • select <컬럼명1, 컬럼명2> from <테이블명> where (not) <조건>;
@@ -66,9 +73,9 @@
       
       • select count(*) from <테이블명> where <조건>;
 
-    (2) group by 
+   (2) group by 
       • select * from <테이블명> group by <기준 필드명>;
-      
+
       • select * from <테이블명> group by <기준 필드명> having <조건>;
           ex) select deptno, avg(sal) from emp group by deptno having avg(sal) >=2000;
           ** avg, sum, count
@@ -77,17 +84,16 @@
       • select * from <테이블명> order by <기준 필드명> <asc or desc>;       // asc: 오름차순, desc: 내림차순
       
       • select <필드명1, 필드명2> from <테이블명> order by <필드명1> desc, <필드명2> asc;
-
-  2) Create
-      • insert into <테이블명>(컬럼명1, 컬럼명2) values (컬럼1의값, 컬럼2의 값);
-
-  3) Update
+```
+  **3) Update**
+```
       • update <테이블명> set <기존컬럼명> = "업데이트컬럼명" where <조건>;
       
       • on duplicate key update  <컬럼명1> = 값1, <컬럼명2> = 값2
           ex) inset into 'test' (name, place) values ('김삼돌, '올레플라자') on duplicate key update name = '김삼돌', place = '종로5가';
-
-  4) Delete
+```
+  **4) Delete**
+```
       • delete from <테이블명> where <조건>;
 ```
 
@@ -118,15 +124,15 @@
 
 ### 6. 서브쿼리
 ```
-  (1) select <컬럼명> from <테이블명> where <조건컬럼명> = (select <컬럼명*> from <테이블명*> where <조건*>);
+  1) select <컬럼명> from <테이블명> where <조건컬럼명> = (select <컬럼명*> from <테이블명*> where <조건*>);
       ex) select dname from dept where deptno = (select deptno from emp where ename = 'JONES');
         : emp에서 ename이 'jones'라는 사람이 속한 deptno 의 dname 을 dept에서 찾기. 
 
-  (2)select <컬럼명1, 컬럼명2, 컬럼명3> from emp where <조건럼명> > (select 조건컬럼명 from <테이블명>) order by <컬럼명> desc;
+  2)select <컬럼명1, 컬럼명2, 컬럼명3> from emp where <조건럼명> > (select 조건컬럼명 from <테이블명>) order by <컬럼명> desc;
       ex) select empno, ename, sal from emp where sal > (select avg(sal) from emp) order by sal desc;
         : emp에서 평균sal보다 sal이 큰 사람들의 empno, ename, sal을 내림차순으로 정렬.
 
-  (3) select <컬럼명1, 컬럼명2> from <테이블명> where <조건컬럼명1> = (select max<조건컬럼명1> from <테이블명> where <조건>);
-     ex) select empno, ename from emp where sal = (select max(sal) from emp where deptno = 10);
-       : deptno가 10인 사원 중 sal이 가장 큰 사람과 같은 sal을 받는 사람의 empno와 ename 조회.
+  3) select <컬럼명1, 컬럼명2> from <테이블명> where <조건컬럼명1> = (select max<조건컬럼명1> from <테이블명> where <조건>);
+      ex) select empno, ename from emp where sal = (select max(sal) from emp where deptno = 10);
+        : deptno가 10인 사원 중 sal이 가장 큰 사람과 같은 sal을 받는 사람의 empno와 ename 조회.
 ```

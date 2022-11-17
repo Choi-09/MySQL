@@ -8,7 +8,7 @@
    - 만들기
     create index idx_필드명 on 테이블명(필드명);	// 보통 index를 idx라고 축약	
   ```
-  
+---  
 **2. View**
   ```
      - 가상테이블을 만들어서 보고싶은것만 보여줌
@@ -19,7 +19,7 @@
           where <조건>; 
   ```
  
-
+---
 **3. stored procedures**
   ```
      - 몇 개의 일을 묶어서 처리할 때 사용
@@ -123,6 +123,7 @@
       ex) select addr into _addr from Student where id =1;
       -- set이나 select ino 선택해서 사용가능. 
 ```  
+---
 **4. trigger**
   ```
      - 자동적으로 동작하게 만들 때 사용 

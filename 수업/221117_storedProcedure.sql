@@ -72,12 +72,12 @@ drop procedure if exists 새학과;
 
 delimiter //
 create procedure 새학과 (
-	in 학과_번호 CHAR(2),
+    in 학과_번호 CHAR(2),
     in 학과_명 CHAR(20),
     in 전화_번호 CHAR(20)
     )
 begin
-	insert into 학과(학과번호, 학과명, 전화번호)
+    insert into 학과(학과번호, 학과명, 전화번호)
     values (학과_번호, 학과_명, 전화_번호);
     select * from 학과 where 학과번호 = 학과_번호;
 end//
@@ -89,13 +89,13 @@ select * from 학과;
 drop procedure if exists 통계;
 delimiter //
 create procedure 통계(
-	out 학생수 int,
+    out 학생수 int,
     out 교수수 int,
     out 과목수 int)
 begin 
-select count(학번) into 학생수 from 수강신청;
-select count(사번) into 교수수 from 교수;
-select count(distinct 과목번호) into 과목수 from 수강신청내역;
+    select count(학번) into 학생수 from 수강신청;
+    select count(사번) into 교수수 from 교수;
+    select count(distinct 과목번호) into 과목수 from 수강신청내역;
 end//
 delimiter ;
 call 통계(@a, @b, @c);
@@ -122,7 +122,7 @@ delimiter //
 create function pass(val int)	-- 들어갈 매개변수val과 데이터타입 int
 	returns char(10) charset utf8mb4
 begin
-	declare re char(10);
+    declare re char(10);
     if val = 0 then set re = '미취득';
     else set re = '취득';
     end if;

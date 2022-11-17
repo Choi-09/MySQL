@@ -38,7 +38,7 @@
           End$$ (//)                                     // procedure 로직 끝.
           DELIMITER ;                                    // delimiter_; : delimiter과 ;사이에 공백 한 칸 있다.
        •  (호출) call <stored procedure명>(<in파라미터값>, @<out파라미터미름>);               
-                                                        // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
+                                                      // 저장한 procedure 호출하기.(= schema → stored_procedures → 번개모양버튼)
  ```  
   <새수강신청 procedure 로직>
 <p align = "center"> <img width="800" alt="새수강신청 procedure 로직" src="https://user-images.githubusercontent.com/51871037/202511675-1c67d9ed-0e89-4456-93e2-788097471ae8.png"> </p>
@@ -47,7 +47,7 @@
      ```
        1) if문
           BEGIN
-            → declare <변수명> <변수데이터타입(길이)> default '<default값>';   // declare: 자바의 변수처럼 프로시저 안에서 사용할 변수 선언.
+            → declare <변수명> <변수데이터타입(길이)> default '<default값>';  // declare: 자바의 변수처럼 프로시저 안에서 사용할 변수 선언.
             → set <declare에서 선언한 변수명> = <변수값>;                     // set: 대입할 값(원하는 값으로 세팅)   
             → if <조건1>                                                 // if then: if 조건문
               then <조건1이 참일 경우 실행 될 로직>;

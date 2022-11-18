@@ -85,7 +85,7 @@ create procedure 새학과 (
 BEGIN
     insert into 학과(학과번호, 학과명, 전화번호)
     values (학과_번호, 학과_명, 전화_번호);
-    select * from 학과 where 학과번호 = 학과_번호;		// 이거 왜들어가는지 확인!
+    -- select * from 학과 where 학과번호 = 학과_번호;		// 이거 왜들어가는지 확인! : 삭제해도 됨.
 END//
 delimiter ;
 

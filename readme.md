@@ -10,10 +10,6 @@
 
 ***
 ## MySQL 작업
-   + cmd 접속
-   ```
-   >> mysql -h localhost -u root -p
-   ```
 ### 테이블 생성 및 실행
   + 테이블 생성 순서
     ```
